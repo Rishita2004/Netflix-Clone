@@ -1,0 +1,397 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+<script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<style>
+.x {
+  background-color: lightgrey;
+  border: 10px solid green;
+}
+.y {
+  background-color: lightyellow;
+  border: 5px solid black;
+}
+.z {
+  background-color: lightpink;
+  border: 5px solid red;
+}
+.tele {
+  background-color: yellow;
+  border: 5px solid red;
+}
+</style></head>
+<a href="http://t.me/vipsolve"><div class=tele><center><h3>CLICK HERE TO GET MORE FREE SOLUTIONS</h3></center></div></a>
+<div class="x">
+</div></div><h3><p><b>
+<mark>:: Solution ::</mark>
+</b></p></h3><div class="y"><h3><p><b>
+<mark>step: 1</mark>
+</b></p></h3></p><p>1. To create a sequence for the TID column, we can use the following SQL command:</p><p></p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE SEQUENCE tid_sequence</code><br><code>START WITH 1</code><br><code>INCREMENT BY 1;</code><br><code></code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query creates a new sequence named tid_seq with a starting value of 1 and an increment of 1.</p><p></p><p>2. To find the top three accounts according to their balance-decreasing order, we can use the following SQL query:</p><p></p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT AID, balance</code><br><code>FROM Account</code><br><code>ORDER BY balance DESC</code><br><code>FETCH FIRST 3 ROWS ONLY;</code><br><code></code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query selects all columns from the Account table, orders them by balance in descending order, and limits the result to the top 3 rows.</p><p><h3><p><b>
+<mark>step: 2</mark>
+</b></p></h3></p><p>3. To recreate the Account table in the name my_acc without rows, we can use the following SQL command:</p><p></p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE TABLE my_acc AS SELECT * FROM Account WHERE 1=0;</code><br><code></code></pre></p><p>or<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE TABLE my_acc (</code><br><code>    AID INTEGER PRIMARY KEY,</code><br><code>    type VARCHAR(20),</code><br><code>    balance NUMERIC(10,2),</code><br><code>    bank_code INTEGER REFERENCES Bank_Master(Code),</code><br><code>    CID INTEGER REFERENCES Customer(CID)</code><br><code>);</code></pre></p><p></p><p>4. To create a type for address, we can use the following SQL command:</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE TYPE address_type AS (</code><br><code>    doorno INTEGER,</code><br><code>    street VARCHAR(50),</code><br><code>    landmark VARCHAR(50),</code><br><code>    city VARCHAR(50),</code><br><code>    state VARCHAR(50),</code><br><code>    pincode INTEGER</code><br><code>);</code><br><code></code></pre></p><p></p><p>We can then use this type to create the new Customer_new table as follows:</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE TABLE Customer_new (</code><br><code>    CID INTEGER PRIMARY KEY,</code><br><code>    Aadharno BIGINT UNIQUE,</code><br><code>    Name VARCHAR(50),</code><br><code>    Address address_type,</code><br><code>    DoB DATE,</code><br><code>    anyremarks VARCHAR(100)</code><br><code>);</code><br><code></code></pre></p><p><h3><p><b>
+<mark>step: 3</mark>
+</b></p></h3></p><p>5. To insert values into the Customer_new table and display all the customer details, we can use the following SQL commands:</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>INSERT INTO Customer_new VALUES (1, 123456789012, 'John Doe', (1, 'Main St', 'Near Park', 'Chennai', 'Tamil Nadu', 600001), '1990-01-01', 'Regular customer');</code><br><code>INSERT INTO Customer_new VALUES (2, 234567890123, 'Jane Smith', (2, '2nd St', 'Opposite Hospital', 'Bangalore', 'Karnataka', 560001), '1985-05-05', 'VIP customer');</code><br><code>INSERT INTO Customer_new VALUES (3, 345678901234, 'Mike Johnson', (3, '3rd St', 'Next to Mall', 'Mumbai', 'Maharashtra', 400001), '1995-07-07', 'New customer');</code><br><code></code><br><code>SELECT * FROM Customer_new;</code><br><code></code><br><code></code><br><code></code><br><code></code><br><code></code></pre></p><p>To display customers who live in Tamil Nadu, you can use the following SQL query:<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT * FROM Customer_new</code><br><code>WHERE Address.state = 'Tamil Nadu';</code><br><code></code></pre></p><p><h3><p><b>
+<mark>step: 4</mark>
+</b></p></h3></p><p>6. To create a new type to store landmark (maximum three), we can use the following SQL command:</p><p></p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE TYPE landmark_type AS (</code><br><code>    landmark1 VARCHAR(50),</code><br><code>    landmark2 VARCHAR(50),</code><br><code>    landmark3 VARCHAR(50)</code><br><code>);</code><br><code></code></pre></p><p>We can then use this type to create the new Bank_master_new table as follows:</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>CREATE TABLE Bank_master_new (</code><br><code>    Code INTEGER PRIMARY KEY,</code><br><code>    Name VARCHAR(50),</code><br><code>    Address address_type,</code><br><code>    Landmark landmark_type</code><br><code>);</code><br><code></code></pre></p><p><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3></p><p>7. To insert values into the Bank_master_new table and display the address of banks, we can use the following SQL commands:</p><p><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>INSERT INTO Bank_master_new VALUES (1, 'Bank A', (1, 'Main St', 'Near Park', 'Chennai', 'Tamil Nadu', 600001), ('Phoenix Mall', 'Near Bus Stand', NULL));</code><br><code>INSERT INTO Bank_master_new VALUES (2, 'Bank B', (2, '2nd St', 'Opposite Hospital', 'Bangalore', 'Karnataka', 560001), ('Tamilnadu GYM', NULL, NULL));</code><br><code></code></pre><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3></p><p>i. To display the address of the banks in the Bank_master_new table, you can use the following SQL query:</p><p></p><p><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT Code, Name, Address FROM Bank_master_new;</code><br><code></code></pre><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3></p><p>ii . To display the names of banks whose landmark is either 'Phoenix Mall' or 'Tamilnadu GYM', you can use the following SQL query:</p><p></p><p><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT Name FROM Bank_master_new</code><br><code>WHERE Address.landmark @> ARRAY['Phoenix Mall', 'Tamilnadu GYM'];</code><br><code></code></pre><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3></p><p><div class="z"><h2><p><b>
+Likes: 0</p><p>Dislikes:  0
+</b></p></h2></div>

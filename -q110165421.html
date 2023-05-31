@@ -1,0 +1,305 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+<script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<style>
+.x {
+  background-color: lightgrey;
+  border: 10px solid green;
+}
+.y {
+  background-color: lightyellow;
+  border: 5px solid black;
+}
+.z {
+  background-color: lightpink;
+  border: 5px solid red;
+}
+.tele {
+  background-color: yellow;
+  border: 5px solid red;
+}
+</style></head>
+<a href="http://t.me/vipsolve"><div class=tele><center><h3>CLICK HERE TO GET MORE FREE SOLUTIONS</h3></center></div></a>
+<div class="x">
+</div></div><h3><p><b>
+<mark>:: Solution ::</mark>
+</b></p></h3><div class="y"><h3><p><b>
+<mark>step: 1</mark>
+</b></p></h3></p><p>1. Find the bank names which have more than 5 accounts.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT b.Name</code><br><code>FROM Bank_Master b</code><br><code>WHERE (</code><br><code>    SELECT COUNT(*) </code><br><code>    FROM Account a </code><br><code>    WHERE a.bank_code = b.Code</code><br><code>) > 5;</code><br><code></code></pre></p><p>2. Find customers who have at least two accounts and one loan.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT c.Name</code><br><code>FROM Customer c</code><br><code>WHERE (</code><br><code>    SELECT COUNT(*) </code><br><code>    FROM Account a </code><br><code>    WHERE a.CID = c.CID</code><br><code>) >= 2 AND (</code><br><code>    SELECT COUNT(*) </code><br><code>    FROM Loan l </code><br><code>    WHERE l.CID = c.CID</code><br><code>) >= 1;</code><br><code></code></pre></p><p><h3><p><b>
+<mark>step: 2</mark>
+</b></p></h3></p><p>3. Find the banks (name and address) which have provided accounts for all the customers of Vellore (city must be 'Vellore').</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT bm.Name, bm.Address </code><br><code>FROM Bank_Master bm</code><br><code>WHERE NOT EXISTS (</code><br><code>    SELECT * </code><br><code>    FROM Customer c </code><br><code>    WHERE c.city = 'Vellore' AND NOT EXISTS (</code><br><code>        SELECT * </code><br><code>        FROM Account a </code><br><code>        WHERE a.CID = c.CID AND a.bank_code = bm.Code</code><br><code>    )</code><br><code>);</code><br><code></code></pre></p><p>4. Find customers who have paid (credit) for all the loans that he has in the last month.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT c.Name</code><br><code>FROM Customer c</code><br><code>WHERE NOT EXISTS (</code><br><code>    SELECT *</code><br><code>    FROM Loan l</code><br><code>    WHERE l.CID = c.CID AND l.type = 'credit' </code><br><code>        AND l.date_time >= DATEADD(month, -1, GETDATE())</code><br><code>        AND NOT EXISTS (</code><br><code>            SELECT *</code><br><code>            FROM Transactions_withinbank t</code><br><code>            WHERE t.ID = l.LNO AND t.type = 'credit' AND t.CID = c.CID</code><br><code>        )</code><br><code>);</code><br><code></code></pre></p><p><h3><p><b>
+<mark>step: 3</mark>
+</b></p></h3></p><p>Complex Query:</p><p>Take the customer name and display the online deposits he has.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT c.Name, SUM(od.Type)</code><br><code>FROM Customer c</code><br><code>INNER JOIN Online_deposits od ON od.CID = c.CID</code><br><code>GROUP BY c.Name;</code><br><code></code></pre></p><p>2. Take the customer name and display the total credit he has done with loan.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT c.Name, SUM(l.Amount_sanctioned)</code><br><code>FROM Customer c</code><br><code>INNER JOIN Loan l ON l.CID = c.CID AND l.type = 'credit'</code><br><code>GROUP BY c.Name;</code><br><code></code></pre></p><p>3. Display the Bank Code, Name and the number of accounts it has.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT b.Code, b.Name, COUNT(a.AID) AS Num_Accounts</code><br><code>FROM Bank_Master b</code><br><code>LEFT JOIN Account a ON a.bank_code = b.Code</code><br><code>GROUP BY b.Code, b.Name;</code><br><code></code></pre></p><p><h3><p><b>
+<mark>step: 4</mark>
+</b></p></h3></p><p>4. Display the bank name which has given the maximum amount in loan</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT bm.Name, MAX(l.Amount_sanctioned) AS Max_Loan_Amount</code><br><code>FROM Bank_Master bm</code><br><code>INNER JOIN Loan l ON l.bank_code = bm.Code</code><br><code>GROUP BY bm.Name</code><br><code>ORDER BY Max_Loan_Amount DESC</code><br><code>LIMIT 1;</code><br><code></code></pre></p><p>5. Find the customers who have at least two accounts.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT c.Name</code><br><code>FROM Customer c</code><br><code>INNER JOIN Account a ON a.CID = c.CID</code><br><code>GROUP BY c.Name</code><br><code>HAVING COUNT(DISTINCT a.AID) >= 2;</code><br><code></code></pre></p><p>6. Find the customer name who has the highest number of (online) deposits.</p><p><style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT TOP 1 c.Name, COUNT(od.Refno) AS Num_Online_Deposits</code><br><code>FROM Customer c</code><br><code>INNER JOIN Online_deposits od ON od.CID = c.CID</code><br><code>GROUP BY c.Name</code><br><code>ORDER BY Num_Online_Deposits DESC;</code><br><code></code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>Correlated Queries:</p><p>This query uses a correlated subquery to find bank names that have more than 5 accounts. The outer query selects bank names from the Bank_Master table, while the subquery counts the number of accounts each bank has in the Account table. The subquery uses the bank code as the link between the two tables.</p><p>This query uses two correlated subqueries to find customers who have at least two accounts and one loan. The outer query selects customer names from the Customer table, while the two subqueries count the number of accounts and loans each customer has in the Account and Loan tables, respectively. The subqueries use the customer ID (CID) as the link between the tables.</p><p>This query uses a correlated subquery to find banks (name and address) which have provided accounts for all customers in Vellore. The outer query selects bank names and addresses from the Bank_Master table, while the subquery checks if each customer in Vellore has at least one account with the bank. The subquery uses the customer city and ID as the link between the tables.</p><p>This query uses two correlated subqueries to find customers who have paid for all their loans in the last month. The outer query selects customer names from the Customer table, while the two subqueries check if each loan is a credit and has been paid by the customer within the last month. The subqueries use the customer ID and loan ID as the link between the tables.</p><p>Complex Queries:</p><p>This query uses an inner join to combine the Customer and Online_deposits tables and group the results by customer name. The query calculates the sum of online deposits for each customer and displays the customer name and total online deposits.</p><p>This query uses an inner join to combine the Customer and Loan tables and group the results by customer name. The query calculates the sum of credit loans for each customer and displays the customer name and total credit loans.</p><p>This query uses a left join to combine the Bank_Master and Account tables and group the results by bank code and name. The query calculates the number of accounts each bank has and displays the bank code, name, and number of accounts.</p><p>This query uses an inner join to combine the Bank_Master and Loan tables and group the results by bank name. The query calculates the maximum loan amount for each bank and displays the bank name with the highest maximum loan amount.</p><p>This query uses an inner join to combine the Customer and Account tables and group the results by customer name. The query checks if each customer has at least two accounts and displays the customer name for customers who meet the criteria.</p><p>This query uses an inner join to combine the Customer and Online_deposits tables and group the results by customer name. The query calculates the number of online deposits for each customer and displays the customer name with the highest number of online deposits.</p><p></p><p><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3></p><p>In summary, the queries provided are used to retrieve specific information from a banking system database. Correlated queries are used to filter data based on certain conditions, while complex queries involve grouping and joining data from multiple tables to obtain meaningful insights. The queries cover a range of topics, including bank names with more than 5 accounts, customers with multiple accounts and loans, banks that have provided accounts to all customers in a specific city, customers who have paid for all their loans in the last month, and more. Overall, the queries are useful for analyzing and understanding the data stored in a banking system database.</p><p><div class="z"><h2><p><b>
+Likes: 0</p><p>Dislikes:  0
+</b></p></h2></div>

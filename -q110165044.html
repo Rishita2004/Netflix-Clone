@@ -1,0 +1,405 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+<script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<style>
+.x {
+  background-color: lightgrey;
+  border: 10px solid green;
+}
+.y {
+  background-color: lightyellow;
+  border: 5px solid black;
+}
+.z {
+  background-color: lightpink;
+  border: 5px solid red;
+}
+.tele {
+  background-color: yellow;
+  border: 5px solid red;
+}
+</style></head>
+<a href="http://t.me/vipsolve"><div class=tele><center><h3>CLICK HERE TO GET MORE FREE SOLUTIONS</h3></center></div></a>
+<div class="x">
+</div></div><h3><p><b>
+<mark>:: Solution ::</mark>
+</b></p></h3><div class="y"><h3><p><b>
+<mark>step: 1</mark>
+</b></p></h3></p><p># SET Operators:</p><p></p><p>1. Find the customer numbers for which there are no online deposits.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT CID FROM Customer </code><br><code>WHERE CID NOT IN (SELECT CID FROM Online_deposits);</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the NOT IN operator to retrieve the customer IDs that are not present in the list of customer IDs who have made online deposits.</p><p></p><p></p><p>2. Find the accounts or loans in which transactions have been made.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT AID FROM Account WHERE AID IN (SELECT ID FROM Transactions_withinbank)</code><br><code>UNION</code><br><code>SELECT LNO FROM Loan WHERE LNO IN (SELECT ID FROM Transactions_withinbank);</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the UNION operator to combine the list of account IDs and loan IDs for which transactions have been made.</p><p></p><p></p><p>3. Print all the names available in the DB.(bank name / customer name)<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT Name FROM Bank_Master</code><br><code>UNION</code><br><code>SELECT Name FROM Customer;</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the UNION operator to retrieve the list of names of all banks and customers available in the database.</p><p></p><p></p><p>4. Find the customer name who have 'current' account.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT Name FROM Customer </code><br><code>WHERE CID IN (SELECT CID FROM Account WHERE type = 'current');</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the IN operator to retrieve the customer names who have a 'current' account.</p><p><h3><p><b>
+<mark>step: 2</mark>
+</b></p></h3></p><p># Nested Query:</p><p></p><p>1. Find the customer name who have housing loan.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT Name FROM Customer WHERE CID IN (SELECT CID FROM Loan WHERE type = 'housing');</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the IN operator to retrieve the customer names who have a housing loan.</p><p></p><p></p><p>2. Find the bank names that have given >2000000 as loan for customers in chennai.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT Name FROM Bank_Master WHERE Code IN </code><br><code>(SELECT bank_code FROM Loan WHERE Amount_sanctioned > 2000000 </code><br><code>AND CID IN (SELECT CID FROM Customer WHERE city = 'chennai'));</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the IN operator to retrieve the bank names that have given more than 2000000 as loan for customers in chennai.</p><p></p><p></p><p></p><p></p><p></p><p>3. Find the customer details who have a loan but not an account.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT * FROM Customer WHERE CID IN (SELECT CID FROM Loan) AND CID NOT IN (SELECT CID FROM Account);</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the NOT IN operator to retrieve the customer details who have a loan but do not have an account.</p><p></p><p>4. Find the total amount deposited in the period (give any two dates and time) of all car loans.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT SUM(amount) FROM Transactions_withinbank </code><br><code>WHERE ID IN (SELECT LNO FROM Loan WHERE type = 'car') </code><br><code>AND date_time BETWEEN '2022-01-01 00:00:00' AND '2022-02-01 00:00:00';</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query uses the BETWEEN operator to retrieve the total amount deposited in the period of January 2022 for all car loans.</p><p><h3><p><b>
+<mark>step: 3</mark>
+</b></p></h3></p><p># Join Query:</p><p></p><p>1. Find the customer names of Indian bank. (consider they have only accounts)<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT c.Name</code><br><code>FROM Customer c</code><br><code>INNER JOIN Account a ON c.CID = a.CID</code><br><code>INNER JOIN Bank_Master b ON a.bank_code = b.Code</code><br><code>WHERE b.Name = 'Indian bank';</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query joins the Customer, Account and Bank_Master tables using the CID and bank_code foreign keys. It then filters the result to only show customers who have an account with the Indian bank.</p><p></p><p></p><p>2. Find the customer names who have made transactions in their loan.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT DISTINCT c.Name</code><br><code>FROM Customer c</code><br><code>INNER JOIN Loan l ON c.CID = l.CID</code><br><code>INNER JOIN Transactions_withinbank t ON t.ID = l.LNO</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query joins the Customer, Loan and Transactions_withinbank tables using the CID and LNO foreign keys. It then selects only the distinct customer names who have made transactions on their loan.</p><p></p><p></p><p>3. Find all the Bank code, Bank Name and the account details if any.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT b.Code, b.Name, a.AID, a.type, a.balance</code><br><code>FROM Bank_Master b</code><br><code>LEFT JOIN Account a ON a.bank_code = b.Code</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query left joins the Bank_Master and Account tables using the bank_code foreign key. It selects the bank code, name and account details (if any) from the joined table.</p><p></p><p></p><p>4. Find loan details and all the customers(name and address) details, even if they do not have loan.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT l.LNO, l.type, l.Amount_sanctioned, l.balance, c.Name, c.Address</code><br><code>FROM Customer c</code><br><code>LEFT JOIN Loan l ON l.CID = c.CID</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query left joins the Customer and Loan tables using the CID foreign key. It selects the loan details and customer name and address details (even if they do not have a loan) from the joined table.</p><p></p><p></p><p>5. List all the account and transaction details along with transactions made in the accounts.<style>pre.code {
+                  white-space: pre-wrap;
+                    background-color:#ededed;
+                display: inline-block;
+                width: 65em;
+                    padding-left: auto; /* now works */
+                  margin-left: 10;  /* now works */
+
+                }
+                pre.code::before {
+                  counter-reset: listing;
+
+                }
+                pre.code code {
+                  counter-increment: listing;
+                }
+                pre.code code::before {
+                  content: counter(listing) " ";
+                  display: inline-block;
+                  width: 2em;         /* now works */
+                  padding-left: auto; /* now works */
+                  margin-left: auto;  /* now works */
+                  text-align: right;  /* now works */
+                    background-color:#d9d7d7;
+                color:red;
+                }
+                </style> <pre class="code"><br><code>SELECT a.AID, a.type, a.balance, t.TID, t.type, t.amount, t.date_time, t.status</code><br><code>FROM Account a</code><br><code>LEFT JOIN Transactions_withinbank t ON t.ID = a.AID</code></pre></p><p><h3><p><b>
+<mark>Explanation: </mark>
+</b></p></h3></p><p>This query left joins the Account and Transactions_withinbank tables using the AID foreign key. It selects the account and transaction details (including those accounts without transactions) from the joined table.</p><p><h3><p><b>
+<mark>Final Answer</mark>
+</b></p></h3></p><p>SET Operators:</p><p></p><p>1. Find the customer numbers for which there are no online deposits.</p><p></p><p>SELECT CID FROM Customer </p><p>WHERE CID NOT IN (SELECT CID FROM Online_deposits);</p><p></p><p>2. Find the accounts or loans in which transactions have been made.</p><p></p><p>SELECT AID FROM Account WHERE AID IN (SELECT ID FROM Transactions_withinbank)</p><p>UNION</p><p>SELECT LNO FROM Loan WHERE LNO IN (SELECT ID FROM Transactions_withinbank);</p><p></p><p>3. Print all the names available in the DB.(bank name / customer name)</p><p></p><p>SELECT Name FROM Bank_Master</p><p>UNION</p><p>SELECT Name FROM Customer;</p><p></p><p>4. Find the customer name who have 'current' account.</p><p></p><p>SELECT Name FROM Customer </p><p>WHERE CID IN (SELECT CID FROM Account WHERE type = 'current');</p><p></p><p>Nested Query:</p><p></p><p>1. Find the customer name who have housing loan.</p><p></p><p>SELECT Name FROM Customer WHERE CID IN (SELECT CID FROM Loan WHERE type = 'housing');</p><p></p><p>2. Find the bank names that have given >2000000 as loan for customers in chennai.</p><p></p><p>SELECT Name FROM Bank_Master WHERE Code IN </p><p>(SELECT bank_code FROM Loan WHERE Amount_sanctioned > 2000000 </p><p>AND CID IN (SELECT CID FROM Customer WHERE city = 'chennai'));</p><p></p><p>3. Find the customer details who have a loan but not an account.</p><p></p><p>SELECT * FROM Customer WHERE CID IN (SELECT CID FROM Loan) AND CID NOT IN (SELECT CID FROM Account);</p><p></p><p>4. Find the total amount deposited in the period (give any two dates and time) of all car loans.</p><p></p><p>SELECT SUM(amount) FROM Transactions_withinbank </p><p>WHERE ID IN (SELECT LNO FROM Loan WHERE type = 'car') </p><p>AND date_time BETWEEN '2022-01-01 00:00:00' AND '2022-02-01 00:00:00';</p><p></p><p># Join Query :</p><p></p><p>1. Find the customer names of Indian bank. (consider they have only accounts)</p><p></p><p>SELECT c.Name</p><p>FROM Customer c</p><p>INNER JOIN Account a ON c.CID = a.CID</p><p>INNER JOIN Bank_Master b ON a.bank_code = b.Code</p><p>WHERE b.Name = 'Indian bank';</p><p></p><p>2. Find the customer names who have made transactions in their loan.</p><p></p><p>SELECT DISTINCT c.Name</p><p>FROM Customer c</p><p>INNER JOIN Loan l ON c.CID = l.CID</p><p>INNER JOIN Transactions_withinbank t ON t.ID = l.LNO</p><p></p><p>3. Find all the Bank code, Bank Name and the account details if any.</p><p></p><p>SELECT b.Code, b.Name, a.AID, a.type, a.balance</p><p>FROM Bank_Master b</p><p>LEFT JOIN Account a ON a.bank_code = b.Code</p><p></p><p>4. Find loan details and all the customers(name and address) details, even if they do not have loan.</p><p></p><p>SELECT l.LNO, l.type, l.Amount_sanctioned, l.balance, c.Name, c.Address</p><p>FROM Customer c</p><p>LEFT JOIN Loan l ON l.CID = c.CID</p><p></p><p>5. List all the account and transaction details along with transactions made in the accounts.</p><p></p><p>SELECT a.AID, a.type, a.balance, t.TID, t.type, t.amount, t.date_time, t.status</p><p>FROM Account a</p><p>LEFT JOIN Transactions_withinbank t ON t.ID = a.AID<div class="z"><h2><p><b>
+Likes: 0</p><p>Dislikes:  0
+</b></p></h2></div>

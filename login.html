@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<style>
+.login-box{
+    min-height: 70vh;
+    background-color: black;
+    color: white;
+    font-family: 'Varela Round', sans-serif;
+    display: flex;
+    margin: 100px auto;
+    width: 30%;
+    height: 40%;
+    border-radius: 12px;
+    justify-content: left;
+    padding-left: 90px;
+}
+.login-footer{
+    height: 400px;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    border: auto;
+    margin: 12px 0;
+    width: 100%;
+    padding-bottom: 20px;
+    position: relative;
+}
+#input{
+    height: 50px;
+    width: 350px;
+  background-color:rgb(58, 56, 56);
+  border-radius: 5px;
+  font-size: 25px;
+  color:white
+}
+::placeholder { 
+    padding: 24px;
+   font-size: 25px;
+}
+#button{
+    height: 50px;
+    width: 350px;
+  background-color:rgb(255, 0, 0);
+  border-radius: 5px;
+    color: white;
+    font-size: 20px;
+}
+#login-container{
+    font-size: 25px;
+    padding-right: 15%;
+}
+#rem_me{
+    color: white;
+}
+#remember{
+    font-size: 18px;
+}
+.footer-items{
+    color: grey;
+    padding-left: 17%;
+    padding-top: 12px;
+    justify-content: center;
+}
+#help{
+    font-size: 18px;
+}
+a:link,a:visited {
+  color: grey;
+  background-color: transparent;
+  text-decoration: none;
+}
+#form{
+    height: 30px;
+    width: 100px;
+    font-size: 20px;
+}
+#data-box{
+    text-align: left;
+    width: 360px;
+    height: 100px;
+    font-size: 20px;
+} 
+#signup{
+    color: blue;
+}
+#signin{
+    color: white;
+}
+</style>
+<body background="bg.jpg" width="300" height="500">
+<img src="LOGO.svg" width="190" height="60" style="padding:20px">
+<div class="login-box">
+    <div id="login-container">
+        <h1>Sign In</h1><br>
+        <input id="input" type="text" name="Email" placeholder="Email"/><br><br>
+        <input id="input" type="password" name="Pass" placeholder="Password"/><br><br><br>
+        <button id="button"><a id="signin"href="login.html">Sign In</a></button><br>
+        <input type="checkbox" id="rem_me" name="rem" value="Remember Me">
+        <label for="vehicle1" id="remember"> Remember Me</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="" id="help">Need Help?</a>
+        <h6>New to Netflix? <a id="signup"href="signup.html">Sign up now.</a></h6>       
+        <h6>This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</h6>
+    </div>
+</div>
+<div class="login-footer">
+<div class="footer-items">
+    <h2>Questions? Call 0120-996-012</h2><br>
+    <table >
+        <tr>
+        <th id="data-box"><a href="">FAQ</a></th>
+        <th id="data-box"><a href="">Help Center</a></th>
+        <th id="data-box"><a href="">Netflix Shop</a></th>
+        <th id="data-box"><a href="">Terms of Use</a></th>
+        </tr>
+        <tr>
+            <th id="data-box"><a href="">Privacy</a></th>
+            <th id="data-box"><a href="">Cookie Preferences</a></th>
+            <th id="data-box"><a href="">Corporate Information</a></th>
+            <th id="data-box"><a href="">Act on Commercial Transactions</a></th>
+            </tr>
+    </table>
+    <form>
+        <select name="dropdown" id="form">
+            <option value="English">English</option>
+            <option value="Hindi">हिंदी</option>
+            <option value="Tamil">தமிழ்</option>
+            <option value="Telegu">తెలుగు</option>
+    </form>
+</div>
+</div>
+</body>
+</html>
